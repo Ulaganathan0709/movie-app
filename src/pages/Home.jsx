@@ -45,11 +45,6 @@ const movies = [ {
 
 
 
-useEffect (() => {
-  fetch("const ('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1")
-  .then((response) => response.json())
-  .then((data) => setMovies())
-})
 export const Home = () => {
   return (
     <div className='p-4 pt-16'>
