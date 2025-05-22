@@ -3,6 +3,7 @@ import { BrowserRouter, Routes,Route } from 'react-router-dom'
 import { Navbar } from './pages/Navbar'
 import { Home } from './pages/Home'
 import { Watchlist } from './pages/Watchlist'
+import { WatchlistProvider } from './context/WatchListContext'
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
 
 
   return (
+    <WatchlistProvider>
     <BrowserRouter>
     <Navbar />
     <Routes>
@@ -21,6 +23,7 @@ function App() {
       <Route path='/watchlist' element={<Watchlist />}/>
     </Routes>
     </BrowserRouter>
+    </WatchlistProvider>
   )
 }
 

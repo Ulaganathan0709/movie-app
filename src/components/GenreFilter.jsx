@@ -1,13 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react';
+import { WatchlistContext } from '../context/WatchListContext';
 
-export const GenreFilter = () => {
+export const GenreFilter = ({ selectedGenre, onGenreChange }) => {
+  const { genreList } = useContext(WatchlistContext);
+
   return (
-    <select className='p-2 mb-4 bg-gray-900 bg-opacity-60 backdrop-blur-md text-white border rounded'>
-        <option value="">1</option>
-        <option value="">2</option>
-        <option value="">3</option>
-        <option value="">4</option>
+    <select
+      value={selectedGenre}
+      onChange={(e) => onGenreChange(e.target.value)} // ✅ Only this
+      className='p-2 mb-4 bg-gray-900 bg-opacity-60 backdrop-blur-md text-white border rounded'
+    >
+      <option value="">All Genres</option>
+      {genreList.map((genre) => (
+        <option key={genre.id} value={genre.id}>
+          {genre.name}
+        </option>
+      ))}
     </select>
-  )
-}
-
+  );
+};
